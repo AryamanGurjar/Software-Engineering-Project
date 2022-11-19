@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+
+  <title>Reach Us</title>
+  <link rel="stylesheet" type="text/css" href="appointment.css" />
+</head>
+
+<body>
+  <div id="container">
+    <!--This is a division tag for body container-->
+    <div id="body_header">
+      <!--This is a division tag for body header-->
+      <h1>Appointment</h1>
+
+
+    </div>
+    <form action="index.html" method="post">
+    
+
+      <fieldset>
+      
+        <label for="Your Name">Your Name:</label>
+        <input type="text" name="date" value="" required></input>
+        <label for="appointment_description">Describe your disease:</label>
+        <textarea id="appointment_description" name="appointment_description" placeholder="I had fever from last night ...."></textarea>
+        <label for="date">Date*:</label>
+        <input type="date" name="date" value="" required></input>
+        <br>
+        <label for="time">Time*:</label>
+        <input type="time" name="time" value="" required></input>
+        <br>
+        <label for="duration">How Long??(Minutes)</label>
+        <input type="radio" name="duration" value="30" checked> 30
+        <input type="radio" name="duration" value="60"> 60
+        <input type="radio" name="duration" value="90"> 90
+        <input type="radio" name="duration" value="more"> more
+      <br><br>
+       <!--Drag and drop file -->
+       <label for="upload file">Upload you previous reports(optional):</label>
+       <br>
+          <label class="form__container" id="upload-container">Choose or Drag & Drop Files
+            <input class="form__file" id="upload-files" type="file" multiple="multiple"/>
+          </label>
+          <div id="files-list-container"></div>
+        <!-- </form> -->
+      </fieldset>
+      <button type="submit">Request For Appointment</button>
+    </form>
+  </div>
+  <script >
+    const multipleEvents = (element, eventNames, listener) => {
+    const events = eventNames.split(' ');
+  
+    events.forEach(event => {
+      element.addEventListener(event, listener, false);
+    });
+  };
+  
+  const fileUpload = () => {
+    const INPUT_FILE = document.querySelector('#upload-files');
+    const INPUT_CONTAINER = document.querySelector('#upload-container');
+    const FILES_LIST_CONTAINER = document.querySelector('#files-list-container');
+    const FILE_LIST = [];
+  
+    multipleEvents(INPUT_FILE, 'click dragstart dragover', () => {
+      INPUT_CONTAINER.classList.add('active');
+    });
+  
+    multipleEvents(INPUT_FILE, 'dragleave dragend drop change', () => {
+      INPUT_CONTAINER.classList.remove('active');
+    });
+  
+    INPUT_FILE.addEventListener('change', () => {
+      const files = [...INPUT_FILE.files];
+  
+      files.forEach(file => {
+        const fileURL = URL.createObjectURL(file);
+        const fileName = file.name;
+        const uploadedFiles = {
+          name: fileName,
+          url: fileURL };
+  
+  
+        FILE_LIST.push(uploadedFiles);
+      });
+  
+      FILES_LIST_CONTAINER.innerHTML = '';
+      FILE_LIST.forEach(addedFile => {
+        const content = `
+            <div class="form__files-container">
+              <span class="form__text">${addedFile.name}</span>
+              <div>
+                <a class="form__icon" href="${addedFile.url}" target="_blank" title="Preview">&#128065;</a>
+                <a class="form__icon" href="${addedFile.url}" title="Download" download>&#11123;</a>
+              </div>
+            </div>
+          `;
+  
+        FILES_LIST_CONTAINER.insertAdjacentHTML('beforeEnd', content);
+      });
+    });
+  };
+  
+  fileUpload();
+  </script>
+</body>
+
+</html>
