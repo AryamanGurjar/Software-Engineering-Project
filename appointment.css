@@ -12,12 +12,14 @@ body
   color: rgb(144, 204, 144);
   font-family: sans-serif;
 }
-form {
+fieldset { /* form */
   max-width: 300px;
   margin: 10px auto;
   padding: 10px 20px;
   background: #f4f7f8;
   border-radius: 8px;
+  margin-bottom: 30px;
+  border: none;
 }
 
 h1 {
@@ -79,10 +81,10 @@ button {
   margin-bottom: 10px;
 }
 
-fieldset {
+/* fieldset {
   margin-bottom: 30px;
   border: none;
-}
+} */
 
 legend {
   font-size: 1.4em;
