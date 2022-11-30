@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="/static/register.css" />
+</head>
+
+
+<body>
+    <section>
+      <div class="container">
+        <div class="user signinBx">
+          <div class="imgBx"><img src="/static/images\gal3.jpg" alt="" /></div>
+          <div class="formBx">
+            <form action="" onsubmit="return false;">
+              <h2>Sign In</h2>
+              <input type="text" name="" placeholder="Your Name" />
+              <input type="password" name="" placeholder="Password" />
+              <input type="submit" name="" value="Login" />
+              <p class="signup">
+                Don't have an account ?
+                <a href="#" onclick="toggleForm();">Sign Up.</a>
+              </p>
+            </form>
+          </div>
+        </div>
+        <div class="user signupBx">
+          <div class="formBx">
+            <form action="" onsubmit="return false;">
+              <h2>Create an account</h2>
+              <input type="text" name="" placeholder="Your Name" />
+              <input type="email" name="" placeholder="Email Address" />
+              <input type="text" name="" placeholder="Age" />
+              <select style=" width: 100%;
+             ;border: transparent;background: #f5f5f5;padding-top: 2%;padding-bottom: 2%">
+                
+                <option>Male</option>
+                <option>Female</option>
+              </select >
+              <input type="password" name="" placeholder="Create Password" />
+              <input type="password" name="" placeholder="Confirm Password" />
+              <input type="submit" name="" value="Sign Up" />
+              <p class="signup">
+                Already have an account ?
+                <a href="#" onclick="toggleForm();">Sign in.</a>
+              </p>
+            </form>
+          </div>
+          <div class="imgBx"><img src="/static/images\gal2.jpg" alt="" /></div>
+        </div>
+      </div>
+    </section>
+    <script>
+        const toggleForm = () => {
+  const container = document.querySelector('.container');
+  container.classList.toggle('active');
+};
+    </script>
+  </body>
+</html>
