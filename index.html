@@ -1,20 +1,513 @@
+@@ -0,0 +1,760 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <link rel="stylesheet" href="backend/static/fontawesome-free-5.15.3-web/css/all.min.css">
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    <title>MediHome</title>
+
+    <!-- Chatbot -->
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '9f8ea3e1e89ec60d68f42829b76c5d2f1c7e2d7c';
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+    </script>
+
+
 </head>
+
+<style>
+    :root{
+    --mainclr:#239f85;
+    --secclr:#ff5d22;
+    --third:#DFE4E0;
+    --mainafterclr:hsl(167, 81%, 79%);
+}
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    transition: .2s;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+html{
+    font-size: 62.5%;
+    
+}
+.header{
+    padding: 1rem 7%;
+    background-color: var(--mainclr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.header #logo{
+    width: 50px;
+}
+.navbar a{
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    position: relative;
+  
+}
+.navbar a:after{
+    content: '';
+    background: var(--secclr);
+    width: 0;
+    height: 3px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    transition: .3s;
+}
+.navbar a:hover:after{
+    content: '';
+    background: var(--secclr);
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+}
+.icons div{
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: white;
+    display: none;
+}
+.icons a{
+    color: white;
+    background: var(--secclr);
+    padding: 1.5rem 3rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    transition: .5s;
+}
+.icons a:hover{
+    background: transparent;
+    border: 1px solid var(--secclr);
+}
+.navbar.active{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.background-image{
+    background: url(backend/static/images/background.jpg);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 6%;
+    position: relative;
+
+}
+.background-content{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-80%);
+}
+.background-content h1{
+    color: black;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.background-content p{
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.background-content a{
+    background: var(--secclr);
+    padding: 1.5rem 3rem;
+    border-radius: 15px;
+    color: white;
+    font-size: 1.5rem;
+    transition: .5s;
+}
+.background-content a:hover{
+    background: transparent;
+    border: 1px solid var(--secclr);
+    color: black;
+}
+.about{
+    padding: 6rem 7%;
+    background: var(--third);
+}
+.main-about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.inner-about{
+    flex: 1 1 45rem;
+}
+
+.inner-about .inner-about-image img{
+    width: 100%;
+}
+.about-content{
+    width: 80%;
+}
+.about-content h1{
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.about-content p{
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+.about-content a{
+    background: var(--secclr);
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    color: white;
+    transition: .5s;
+}
+.about-content a:hover{
+    background: transparent;
+    border: 1px solid var(--secclr);
+    color: black;
+}
+.our-services{
+    padding: 4rem 7%;
+}
+.service-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+.left-service-content{
+    flex: 1 1 45rem;
+}
+.right-service-content{
+    flex: 1 1 45rem;
+    display: flex;
+    justify-content: flex-end;
+
+}
+.left-service-content h1{
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.left-service-content p{
+    font-size: 1.5rem;
+}
+.right-service-content .right-btn a{
+    padding: 1.5rem 3rem;
+    font-size: 2rem;
+    color: white;
+    background: var(--secclr);
+}
+.right-service-content .right-btn a:hover{
+    border: 1px solid var(--secclr);
+    background: transparent;
+    color: black;
+}
+.main-services{
+    padding-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.inner-services-content{
+    flex: 1 1 300px;
+    padding: 1rem 3rem;
+    text-align: center;
+}
+.inner-services-content h2{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.inner-services-content p{
+    font-size: 1.5rem;
+    line-height: 2;
+}
+.service-icon i{
+    font-size: 4rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 8rem;
+    background: var(--mainafterclr);
+    color: var(--mainclr);
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+.service-icon i:hover{
+    color: white;
+    background: var(--mainclr);
+}
+.gallery{
+    padding: 4rem 7%;
+}
+.gallery h1{
+    color: var(--mainclr);
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.main-gallery{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.inner-gallery{
+    flex:1 1 300px;
+
+}
+.inner-gallery img{
+    width: 100%;
+    transition: .3s;
+}
+.inner-gallery img:hover{
+    transform: scale(1.1);
+    border-radius: 20px;
+}
+.our-doctors{
+    padding: 4rem 7%;
+}
+.our-doctors h1{
+    text-align: center;
+    font-size: 40px;
+    color: var(--mainclr);
+    margin-bottom: 30px;
+}
+.main-doctor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.inner-doctor{
+    flex: 1 1 300px;
+    position: relative;
+}
+.inner-doctor img{
+    width: 100%;
+
+}
+.doc-icons{
+    position: absolute;
+    bottom: 2%;
+}
+.doc-icons div{
+    font-size: 2rem;
+    color: var(--mainclr);
+    background: white;
+    border: 1px solid black;
+    margin-left: 2rem;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    cursor: pointer;
+}
+.doc-icons div:hover{
+    transform: scale(1.1);
+}
+.why-choseus{
+    padding: 4rem 7%;
+}
+.main-chose{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+.inner-chose{
+    flex: 1 1 45rem;
+}
+.inner-chose img{
+    width: 100%;
+}
+.inner-chose h1{
+    font-size: 40px;
+    color: var(--mainclr);
+    margin-bottom: 20px;
+}
+.main-inner-chose{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    
+}
+.chose-icon i{
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    background: white;
+    color: var(--mainclr);
+    font-size: 3rem;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.icon-content{
+    padding: 0 4rem;
+}
+.icon-content p{
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.footer{
+    padding: 6rem 7%;
+    background: var(--third);
+}
+.main-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.inner-footer{
+    flex: 1 1 200px;
+}
+.inner-footer h2{
+    font-size: 2rem;
+    color: black;
+}
+.inner-footer a{
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: black;
+    display: block;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+.inner-footer a:hover{
+    margin-left: 10px;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--mainclr); 
+    background: var(--mainclr);
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--secclr); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--third); 
+  }
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:767px) {
+
+    html{
+        font-size: 55%;
+    }
+    .header{
+        padding: 2rem;
+    }
+    .icons div{
+        display: initial;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--secclr);
+        display: flex;
+        
+        align-items: center;
+        flex-direction: column;
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+
+    
+    .navbar a{
+        display: block;
+        font-size: 3rem;
+        font-weight: bolder;
+        margin: 1rem;
+        padding: 1rem;
+        color: black;
+    }
+    .background-content{
+        
+        width: 100%;
+       left: 50%;
+       top: 50%;
+       transform: translate(-50%, -50%);
+       padding-left: 5rem;
+    }
+    .inner-about .inner-about-image img{
+        margin-top: 20px;
+    }
+
+    .right-service-content{
+       
+        justify-content: flex-start;
+    
+    }
+
+
+
+
+}
+</style>
 <body>
     
     <header class="header">
-        <img src="images/logo.png" id="logo" alt="">
+        <img src="backend/static/images/logo.png" id="logo" alt="">
 
         <nav class="navbar">
             <a href="register.html">LogIn</a>
@@ -50,17 +543,14 @@
             <div class="inner-about">
                 <div class="about-content">
                     <h1>about us</h1>
-                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consequuntur harum beatae inventore voluptatem numquam voluptatibus fuga, cupiditate cumque porro perferendis tempora, adipisci culpa odio molestias dolorem blanditiis quos ad!</p> -->
-                <p><span>HealthCare.com </span> is a new way of saying your health problems goodbye, through quicker appointments, 
-                    World-class medical doctors ready for a video talk to know more about your problems, and providing the 
-                best hospitals available in your region.</p>
-              
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consequuntur harum beatae inventore voluptatem numquam voluptatibus fuga, cupiditate cumque porro perferendis tempora, adipisci culpa odio molestias dolorem blanditiis quos ad!</p>
+                <a href="#">Read more</a>
                 </div>
                 
             </div>
             <div class="inner-about">
                 <div class="inner-about-image">
-                    <img src="images/chiness.jpg" alt="">
+                    <img src="backend/static/images/chiness.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -70,7 +560,7 @@
         <div class="service-content">
             <div class="left-service-content">
                 <h1>Our special services</h1>
-                <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis animi similique perspiciatis, impedit blanditiis itaque consequuntur laboriosam ipsa asperiores?</p> -->
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis animi similique perspiciatis, impedit blanditiis itaque consequuntur laboriosam ipsa asperiores?</p>
             </div>
 
            
@@ -82,29 +572,26 @@
                     <i class="fas fa-notes-medical"></i>
                 </div>
                 <h2>health care</h2>
-                <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum corporis impedit nam quaerat vitae incidunt aspernatur, conseq</p> -->
-                <p>Best doctors, along with quality medicine availability</p>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum corporis impedit nam quaerat vitae incidunt aspernatur, conseq</p>
+
             </div>
 
             <div class="inner-services-content">
                 <div class="service-icon">
                     <i class="fas fa-hospital-user"></i>
                 </div>
-                <!-- <h2>health care</h2>
+                <h2>health care</h2>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum corporis impedit nam quaerat vitae incidunt aspernatur, conseq</p>
-                 -->
-                 <h2>Quick Appointments</h2>
-                 <p>Qucker the appointment booking, the quicker one can get cured</p>
+                
             </div>
 
             <div class="inner-services-content">
                 <div class="service-icon">
                     <i class="fas fa-user-md"></i>
                 </div>
-                <!-- <h2>health care</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum corporis impedit nam quaerat vitae incidunt aspernatur, conseq</p> -->
-                <h2>Best Doctors</h2>
-                <p>Experienced doctors with more than 5 years experience at your service</p>
+                <h2>health care</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum corporis impedit nam quaerat vitae incidunt aspernatur, conseq</p>
+                
             </div>
         </div>
     </div>
@@ -114,27 +601,27 @@
         <h1>Gallery</h1>
         <div class="main-gallery">
             <div class="inner-gallery">
-                <img src="images/gal1.jpg" alt="">
+                <img src="backend/static/images/gal1.jpg" alt="">
             </div>
 
             <div class="inner-gallery">
-                <img src="images/gal2.jpg" alt="">
+                <img src="backend/static/images/gal2.jpg" alt="">
             </div>
 
             <div class="inner-gallery">
-                <img src="images/gal3.jpg" alt="">
+                <img src="backend/static/images/gal3.jpg" alt="">
             </div>
 
             <div class="inner-gallery">
-                <img src="images/gal4.jpg" alt="">
+                <img src="backend/static/images/gal4.jpg" alt="">
             </div>
 
             <div class="inner-gallery">
-                <img src="images/gal5.jpg" alt="">
+                <img src="backend/static/images/gal5.jpg" alt="">
             </div>
 
             <div class="inner-gallery">
-                <img src="images/gal6.jpg" alt="">
+                <img src="backend/static/images/gal6.jpg" alt="">
             </div>
         </div>
     </div>
@@ -143,7 +630,7 @@
     <div class="why-choseus">
     <div class="main-chose">
         <div class="inner-chose">
-            <img src="images/about_us.jpg" alt="">
+            <img src="backend/static/images/about_us.jpg" alt="">
         </div>
 
         <div class="inner-chose">
@@ -155,8 +642,7 @@
                         <i class="fas fa-notes-medical"></i>
                     </div>
                     <div class="icon-content">
-                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae error explicabo possimus fugit fuga inventore tenetur natus, </p> -->
-                        <p>Quick availability of medicines, as well as treatment is available at an affordable budget.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae error explicabo possimus fugit fuga inventore tenetur natus, </p>
                     </div>
                 </div>
 
@@ -166,10 +652,7 @@
                         
                     </div>
                     <div class="icon-content">
-                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae error explicabo possimus fugit fuga inventore tenetur natus, </p> -->
-                        <p> We value your time as well as others, for which we provide spontaneous appointments  to make
-                            sure you get to know about your current health problems as quickly as possible.
-                        </p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae error explicabo possimus fugit fuga inventore tenetur natus, </p>
                     </div>
                 </div>
 
@@ -178,8 +661,7 @@
                         <i class="fas fa-user-md"></i>
                     </div>
                     <div class="icon-content">
-                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae error explicabo possimus fugit fuga inventore tenetur natus, </p> -->
-                        <p>Some of the most experienced doctors are available here who can provide instant solutions</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae error explicabo possimus fugit fuga inventore tenetur natus, </p>
                     </div>
                 </div>
             </div>
@@ -196,7 +678,7 @@
 
     <div class="main-doctor">
         <div class="inner-doctor">
-            <img src="images/gal3.jpg" alt="">
+            <img src="backend/static/images/gal3.jpg" alt="">
             <div class="doc-icons">
                 <!-- <div class="fab fa-facebook"></div> -->
                 <!-- <div class="fab fa-twitter"></div> -->
@@ -206,7 +688,7 @@
         </div>
 
         <div class="inner-doctor">
-            <img src="images/gal2.jpg" alt="">
+            <img src="backend/static/images/gal2.jpg" alt="">
             <div class="doc-icons">
                 <!-- <div class="fab fa-facebook"></div> -->
                 <!-- <div class="fab fa-twitter"></div> -->
@@ -216,7 +698,7 @@
         </div>
 
         <div class="inner-doctor">
-            <img src="images/gal5.jpg" alt="">
+            <img src="backend/static/images/gal5.jpg" alt="">
             <div class="doc-icons">
                 <!-- <div class="fab fa-facebook"></div> -->
                 <!-- <div class="fab fa-twitter"></div> -->
@@ -234,50 +716,41 @@
 <div class="footer">
     <div class="main-footer">
         <div class="inner-footer">
-            <img src="images/logo.png" alt="">
+            <img src="backend/static/images/logo.png" alt="">
         </div>
 
-        <div style="float:left" >
-            <h2>Team Member</h2><br>
-            <p>UI20CS06 - Anirudh Paliwal</p><br>
-            <p>UI20CS07 - Ankit Baghel</p><br>
-            <p>UI20CS08 - Anshika Agrawal</p><br>
-            <p>UI20CS09 - Aryaman Gurjar</p><br>
-            <p>UI20CS10 - Astik Mehta</p><br>
-            <p>UI20CS19 - Dhvani Shah</p>
+        <div class="inner-footer">
+            <h2>heading</h2>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
         </div>
 
-        
+        <div class="inner-footer">
+            <h2>heading</h2>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+        </div>
+
+        <div class="inner-footer">
+            <h2>heading</h2>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+            <a href="#">lorem</a>
+        </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script src="script.js"></script>
 </body>
 </html>
-
-
-
 
 
 <!-- provide an exceptional patient experience
