@@ -3,12 +3,12 @@
  background-color: white;
  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
  margin-top: 5%;
- margin-left: 15%;
- margin-right: 15%;
+ margin-left: 23%;
+ margin-right: 23%;
  text-align: center;
- padding-top: 5%;
+ padding-top: 2%;
  
- padding-bottom: 5%;
+ padding-bottom: 3%;
  align-self: center;
  
  
@@ -20,7 +20,7 @@
     width: 100%;
    
     color: #239f85;
-    font-size: 80px;
+    font-size: 50px;
     letter-spacing: 2px;
    font-weight: bold;
    
