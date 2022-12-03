@@ -21,32 +21,27 @@
         
           <label for="Your Name">Your Name:</label>
           <input type="text" id="name" name="date" value="" required></input>
-          <label for="appointment_description">Describe your disease:</label>
-          <textarea id="symptoms" name="appointment_description" placeholder="I had fever from last night ...."></textarea>
           <label for="date" >Date*:</label>
           <input type="date" id="date" name="date" value="" required></input>
           <br>
-          <label for="time">Time*:</label>
-          <input type="time" id="time" name="time" value="" required></input>
-          <br>
-          <label for="duration" >How Long??(Minutes)</label>
-          <input type="radio" id="duration" name="duration" value="30" checked> 30
-          <input type="radio" id="duration" name="duration" value="60"> 60
-          <input type="radio" id="duration" name="duration" value="90"> 90
-          <input type="radio" id="duration" name="duration" value="more"> more
+          <label for="timeslots" >How Long??(Minutes)</label>
+          <input type="checkbox" id="timeslots1" name="duration" value="10" checked> 10 am
+          <input type="checkbox" id="timeslots2" name="duration" value="11" checked> 11 am
+          <input type="checkbox" id="timeslots3" name="duration" value="12" checked> 12 pm
+          <input type="checkbox" id="timeslots4" name="duration" value="16" checked> 4 pm
         <br><br>
          <!--Drag and drop file -->
-         <label for="upload file" id="file">Upload you previous reports(optional):</label>
-         <br>
-            <label class="form__container" id="upload-container">Choose or Drag & Drop Files
+         <!-- <label for="upload file" id="file">Upload you previous reports(optional):</label>
+         <br> -->
+            <!-- <label class="form__container" id="upload-container">Choose or Drag & Drop Files
               <input class="form__file" id="upload-files" type="file" multiple="multiple"/>
             </label>
-            <div id="files-list-container"></div>
+            <div id="files-list-container"></div> -->
           <!-- </form> -->
         <!-- </fieldset> -->
         <!-- <button type="submit">Request For Appointment</button> -->
-        <button onclick="signUp()">Request For Appointment</button>
-        <button onclick="fetch()">Fetch Patient List</button>
+        <button onclick="addDoc()">Done</button>
+        <button onclick="fetchDoc()">Fetch Doc List</button>
       </fieldset>
       <!-- </form> -->
     </div>
