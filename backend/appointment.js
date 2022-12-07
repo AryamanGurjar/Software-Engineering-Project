@@ -20,17 +20,19 @@ const database = firebaseApp.firestore();
 
 const signUp = () => {
     const name = document.getElementById("name").value;
-    const date = document.getElementById("date").value;
+    // const date = document.getElementById("date").value;
     const symptoms = document.getElementById("symptoms").value;
-    const time = document.getElementById("date").value;
-    const duration = document.getElementById("duration").value;
+    // const time = document.getElementById("date").value;
+    // const duration = document.getElementById("duration").value;
+    // const files = documnent.getElementById("upload-files").value;
 
     const obj = {
         name: name,
-        date: date,
-        symptoms: symptoms,
-        time: time,
-        duration: duration
+        // date: date,
+        symptoms: symptoms
+        // files : files
+        // time: time,
+        // duration: duration
     };
 
     database.collection("userData").add(obj).then((response)=>{
