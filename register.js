@@ -11,8 +11,8 @@ const database = firebaseApp.firestore();
 const auth = firebaseApp.auth();
 
 const register = () =>{
-    email = document.getElementById("emailS");
-    password = document.getElementById("passwordS");
+    const email = document.getElementById("emailS").value;
+    const password = document.getElementById("passwordS").value;
 
     console.log("FIRE", email, password);
     auth.createUserWithEmailAndPassword(email, password)
@@ -21,5 +21,19 @@ const register = () =>{
     })
     .catch( (e) => {
         console.log(e.message);
+    });
+}
+
+const login = () => {
+    const email = document.getElementById('emailL').value;
+    const password = document.getElementById('pwdL').value;
+
+    auth.signInWithEmailAndPassword(email, password)
+    .then((response) => {
+        console.log(response);
+        window.location.href = 'appointment.html';
+    })
+    .catch((error) => {
+        if(error) alert(error.message);
     });
 }
