@@ -10,10 +10,12 @@ const firebaseApp = firebase.initializeApp({
 const database = firebaseApp.firestore();
 
 
-    database.collection("userData").get().then((response) => {
+    database.collection("DocData").get().then((response) => {
+        document.getElementById("text").innerText+=  "Doctor on duty \t \t \t Date";
         response.forEach((doc) => {
-            console.log("Patient name: " + doc.data().name + "\nDate: " + doc.data().date + "\nHaving symptoms: " + doc.data().symptoms);
-            document.getElementById("text").innerText+=  doc.data().name;
+            console.log("Doctor name: " + doc.data().name + "\nDate: " + doc.data().date);
+            document.getElementById("text").innerText += "\n " +  doc.data().name;
+            document.getElementById("text").innerText+= "\t\t " + doc.data().date;
         });
     });
 

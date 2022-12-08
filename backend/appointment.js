@@ -47,19 +47,19 @@ const signUp = () => {
 const addDoc = () => {
     const name = document.getElementById("name").value;
     const date = document.getElementById("date").value;
-    const timeslots1 = document.getElementById("timeslots1").value;
-    const timeslots2 = document.getElementById("timeslots2").value;
-    const timeslots3 = document.getElementById("timeslots3").value;
-    const timeslots4 = document.getElementById("timeslots4").value;
+    // const timeslots1 = document.getElementById("timeslots1").value;
+    // const timeslots2 = document.getElementById("timeslots2").value;
+    // const timeslots3 = document.getElementById("timeslots3").value;
+    // const timeslots4 = document.getElementById("timeslots4").value;
     // const duration = document.getElementById("duration").value;
 
     const obj = {
         name: name,
-        date: date,
-        timeslots1: timeslots1,
-        timeslots2: timeslots2,
-        timeslots3: timeslots3,
-        timeslots4: timeslots4
+        date: date
+        // timeslots1: timeslots1,
+        // timeslots2: timeslots2,
+        // timeslots3: timeslots3,
+        // timeslots4: timeslots4
         // duration: duration
     };
 
