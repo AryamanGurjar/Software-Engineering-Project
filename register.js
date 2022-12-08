@@ -18,6 +18,7 @@ const register = () =>{
     auth.createUserWithEmailAndPassword(email, password)
     .then( (response) => {
         console.log(response);
+        window.location.href = 'register.html';
     })
     .catch( (e) => {
         console.log(e.message);
